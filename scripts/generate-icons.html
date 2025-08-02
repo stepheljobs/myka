@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Icon Generator</title>
+</head>
+<body>
+    <canvas id="canvas" style="border: 1px solid #ccc;"></canvas>
+    <script>
+        const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        function generateIcon(size) {
+            canvas.width = size;
+            canvas.height = size;
+            
+            // Neobrutalist background
+            ctx.fillStyle = '#FF6B35';
+            ctx.fillRect(0, 0, size, size);
+            
+            // Scale factors
+            const scale = size / 512;
+            
+            // Main geometric shape with brutal shadow
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(80 * scale, 80 * scale, 300 * scale, 300 * scale);
+            
+            ctx.strokeStyle = '#FFFFFF';
+            ctx.lineWidth = 8 * scale;
+            ctx.strokeRect(80 * scale, 80 * scale, 300 * scale, 300 * scale);
+            
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(85 * scale, 85 * scale, 300 * scale, 300 * scale);
+            
+            ctx.strokeStyle = '#000000';
+            ctx.lineWidth = 4 * scale;
+            ctx.strokeRect(85 * scale, 85 * scale, 300 * scale, 300 * scale);
+            
+            // Central brutal "P" for PWA
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(150 * scale, 150 * scale, 40 * scale, 200 * scale);
+            ctx.fillRect(150 * scale, 150 * scale, 120 * scale, 40 * scale);
+            ctx.fillRect(150 * scale, 220 * scale, 100 * scale, 40 * scale);
+            ctx.fillRect(250 * scale, 150 * scale, 40 * scale, 110 * scale);
+            
+            // Chunky shadow effect
+            ctx.fillStyle = 'rgba(0, 212, 170, 0.3)';
+            ctx.fillRect((88 + 8) * scale, (88 + 8) * scale, 300 * scale, 300 * scale);
+            
+            return canvas.toDataURL('image/png');
+        }
+        
+        // Generate and download icons
+        sizes.forEach(size => {
+            const dataUrl = generateIcon(size);
+            const link = document.createElement('a');
+            link.download = `icon-${size}x${size}.png`;
+            link.href = dataUrl;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    </script>
+</body>
+</html>
