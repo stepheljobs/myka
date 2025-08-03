@@ -1,9 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FirestoreService, AppData } from '@/lib/firestore-service';
-import { useAuth } from '@/contexts/AuthContext';
-import { where, orderBy } from 'firebase/firestore';
+import { useAuth } from '../contexts/AuthContext';
+import { FirestoreService, AppData } from '../lib/firestore-service';
 
 export function useFirestore() {
   const { state: authState } = useAuth();
@@ -13,9 +12,8 @@ export function useFirestore() {
   const clearError = () => setError(null);
 
   const handleError = (error: any) => {
-    const message = error.message || 'An error occurred';
-    setError(message);
     console.error('Firestore error:', error);
+    setError(error.message || 'An error occurred');
   };
 
   const createData = async (content: any): Promise<string | null> => {
@@ -28,8 +26,8 @@ export function useFirestore() {
       setLoading(true);
       clearError();
       const firestoreService = new FirestoreService();
-      const id = await firestoreService.createUserData(authState.user.uid, content);
-      return id;
+      const dataId = await firestoreService.createUserData(authState.user.uid, content);
+      return dataId;
     } catch (error) {
       handleError(error);
       return null;
@@ -97,38 +95,4 @@ export function useFirestore() {
     deleteData,
     getUserData,
   };
-}
-
-export function useRealtimeData() {
-  const { state: authState } = useAuth();
-  const [data, setData] = useState<AppData[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!authState.user) {
-      setData([]);
-      setLoading(false);
-      return;
-    }
-
-    setLoading(true);
-    const firestoreService = new FirestoreService();
-    
-    const unsubscribe = firestoreService.onSnapshot<AppData>(
-      'appData',
-      (newData) => {
-        setData(newData);
-        setLoading(false);
-      },
-      [
-        where('userId', '==', authState.user.uid),
-        orderBy('updatedAt', 'desc')
-      ]
-    );
-
-    return () => unsubscribe();
-  }, [authState.user]);
-
-  return { data, loading, error };
 }

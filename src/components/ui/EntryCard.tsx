@@ -7,7 +7,7 @@ import { JournalHistoryEntry } from '../../types';
 interface EntryCardProps {
   entry: JournalHistoryEntry;
   onEdit?: (entry: JournalHistoryEntry) => void;
-  onDelete?: (date: string) => void;
+  onDelete?: (date: string) => Promise<void>;
 }
 
 export default function EntryCard({ entry, onEdit, onDelete }: EntryCardProps) {
@@ -37,9 +37,9 @@ export default function EntryCard({ entry, onEdit, onDelete }: EntryCardProps) {
     }
   };
 
-  const handleDelete = () => {
-    if (onDelete && confirm('Are you sure you want to delete this entry?')) {
-      onDelete(entry.date);
+  const handleDelete = async () => {
+    if (onDelete) {
+      await onDelete(entry.date);
     }
   };
 
@@ -57,6 +57,7 @@ export default function EntryCard({ entry, onEdit, onDelete }: EntryCardProps) {
                 onClick={handleEdit}
                 variant="outline"
                 size="sm"
+                className="text-primary hover:bg-primary/10"
               >
                 Edit
               </Button>
@@ -66,7 +67,7 @@ export default function EntryCard({ entry, onEdit, onDelete }: EntryCardProps) {
                 onClick={handleDelete}
                 variant="outline"
                 size="sm"
-                className="text-destructive hover:bg-destructive/10"
+                className="text-red-600 hover:bg-red-50 border-red-200"
               >
                 Delete
               </Button>

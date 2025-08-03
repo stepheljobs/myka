@@ -422,6 +422,7 @@ export type NotificationType =
   | 'priority-review'
   | 'water-reminder'
   | 'evening-journal'
+  | 'meal-logging'
   | 'custom';
 
 export interface NotificationAction {

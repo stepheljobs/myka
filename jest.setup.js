@@ -41,7 +41,6 @@ jest.mock('firebase/firestore', () => ({
   orderBy: jest.fn(),
   limit: jest.fn(),
   getDocs: jest.fn(),
-  onSnapshot: jest.fn(),
   enableNetwork: jest.fn(),
   disableNetwork: jest.fn(),
   Timestamp: {

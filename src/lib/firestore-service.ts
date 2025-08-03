@@ -11,7 +11,6 @@ import {
   orderBy,
   limit,
   getDocs,
-  onSnapshot,
   enableNetwork,
   disableNetwork,
   Timestamp,
@@ -150,43 +149,6 @@ export class FirestoreService {
     } catch (error: any) {
       throw new Error(`Failed to query documents: ${error.message}`);
     }
-  }
-
-  // Real-time listeners
-  onSnapshot<T>(
-    collectionName: string,
-    callback: (data: T[]) => void,
-    constraints: QueryConstraint[] = []
-  ): () => void {
-    const q = query(collection(db, collectionName), ...constraints);
-    
-    return onSnapshot(q, (querySnapshot) => {
-      const data = querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      })) as T[];
-      callback(data);
-    }, (error) => {
-      console.error('Snapshot listener error:', error);
-    });
-  }
-
-  onDocumentSnapshot<T>(
-    collectionName: string,
-    id: string,
-    callback: (data: T | null) => void
-  ): () => void {
-    const docRef = doc(db, collectionName, id);
-    
-    return onSnapshot(docRef, (docSnap) => {
-      if (docSnap.exists()) {
-        callback({ id: docSnap.id, ...docSnap.data() } as T);
-      } else {
-        callback(null);
-      }
-    }, (error) => {
-      console.error('Document snapshot listener error:', error);
-    });
   }
 
   // User-specific operations

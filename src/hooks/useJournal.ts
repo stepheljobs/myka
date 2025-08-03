@@ -72,20 +72,6 @@ export function useJournal() {
     }
   }, [user]);
 
-  // Subscribe to real-time updates
-  useEffect(() => {
-    if (!user) return;
-
-    const journalService = new JournalService();
-    const unsubscribeEntry = journalService.onTodayEntrySnapshot(user.uid, (entry) => {
-      setTodayEntry(entry);
-    });
-
-    return () => {
-      unsubscribeEntry();
-    };
-  }, [user]);
-
   // Initial load
   useEffect(() => {
     if (user) {

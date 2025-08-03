@@ -71,8 +71,6 @@ export class JournalService {
     }
   }
 
-
-
   // Delete journal entry
   async deleteEntry(userId: string, date: string): Promise<void> {
     const entryId = `${userId}_${date}`;
@@ -83,14 +81,4 @@ export class JournalService {
       throw new Error(`Failed to delete journal entry: ${error.message}`);
     }
   }
-
-  // Subscribe to today's entry changes
-  onTodayEntrySnapshot(userId: string, callback: (entry: JournalEntry | null) => void): () => void {
-    const today = new Date().toISOString().split('T')[0];
-    const entryId = `${userId}_${today}`;
-    
-    return this.firestoreService.onDocumentSnapshot<JournalEntry>('journal_entries', entryId, callback);
-  }
-
-
 } 
