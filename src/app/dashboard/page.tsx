@@ -57,14 +57,14 @@ function DashboardContent() {
               <Typography variant="body" className="text-muted-foreground hidden sm:block">
                 {state.user?.email}
               </Typography>
-              <Link href="/notification-test">
+              {/* <Link href="/notification-test">
                 <Button
                   variant="outline"
                   size="sm"
                 >
                   🧪 Test Notifications
                 </Button>
-              </Link>
+              </Link> */}
               <Button
                 onClick={handleSignOut}
                 variant="outline"
@@ -117,10 +117,10 @@ function DashboardContent() {
 
         {/* Main Content */}
         <Grid cols={1} gap="lg" className="mb-8">
-          {/* PWA Features Card */}
+          {/* App Features Card */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-xl">PWA Features</CardTitle>
+              <CardTitle className="text-xl">App Features</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between p-3 bg-muted border rounded-lg">
@@ -174,11 +174,11 @@ function DashboardContent() {
                     }
                   }}
                 >
-                  Install PWA
+                  Install App
                 </Button>
               ) : isInstalled ? (
                 <Button variant="default" size="default" className="w-full" disabled>
-                  PWA Installed ✅
+                  App Installed ✅
                 </Button>
               ) : (
                 <Button variant="outline" size="default" className="w-full" disabled>

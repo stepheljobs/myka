@@ -3,7 +3,7 @@
 /**
  * Notification Testing Script
  * 
- * This script helps test notifications in your MYKA PWA app.
+ * This script helps test notifications in your MYKA app.
  * Run this script to get testing instructions and simulate different scenarios.
  */
 
@@ -23,7 +23,7 @@ This guide will help you test notifications in your mobile app.
 📱 STEP 1: Setup Your Testing Environment
 ----------------------------------------
 1. Make sure your app is running on a real mobile device
-2. Install the app as a PWA (Progressive Web App)
+2. Install the app on your device
 3. Grant notification permissions when prompted
 4. Ensure you're using HTTPS (required for notifications)
 
@@ -124,7 +124,7 @@ You can also test notifications programmatically:
 
 📝 Testing Checklist
 --------------------
-□ App installed as PWA
+□ App installed on device
 □ Notifications permission granted
 □ HTTPS connection (or localhost)
 □ Service worker registered

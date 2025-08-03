@@ -1,4 +1,4 @@
-# Notification Testing Guide for MYKA PWA
+# Notification Testing Guide for MYKA App
 
 This guide will help you test notifications in your MYKA Progressive Web App on real mobile devices.
 
@@ -24,7 +24,7 @@ npm run test:notifications
 Before testing notifications, ensure you have:
 
 - ✅ **Real Mobile Device**: Notifications work best on actual mobile devices
-- ✅ **PWA Installation**: App must be installed as a Progressive Web App
+- ✅ **App Installation**: App must be installed on your device
 - ✅ **HTTPS Connection**: Required for notifications (localhost works for development)
 - ✅ **Browser Permissions**: Notifications must be allowed in browser settings
 - ✅ **Service Worker**: Must be registered and active
@@ -177,7 +177,7 @@ Test these actions by:
 ## 📱 Platform-Specific Notes
 
 ### iOS
-- Notifications only work when the app is installed as a PWA
+- Notifications only work when the app is installed on your device
 - Requires user interaction to request permission
 - Limited to Safari browser
 - May require enabling notifications in iOS Settings
@@ -213,7 +213,7 @@ Test these actions by:
 
 Use this checklist to ensure comprehensive testing:
 
-- [ ] App installed as PWA
+- [ ] App installed on device
 - [ ] Notifications permission granted
 - [ ] HTTPS connection (or localhost)
 - [ ] Service worker registered

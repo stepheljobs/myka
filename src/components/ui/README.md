@@ -1,6 +1,6 @@
 # Neobrutalism Design System
 
-This directory contains the complete neobrutalism design system components for the PWA application.
+This directory contains the complete neobrutalism design system components for the MYKA application.
 
 ## Components
 

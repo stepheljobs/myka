@@ -96,21 +96,6 @@ export default function EntryCard({ entry, onEdit, onDelete }: EntryCardProps) {
           </p>
         </div>
 
-        {/* View Full Entry Link */}
-        <div className="flex justify-end">
-          <Link href={`/dashboard/journal/${entry.date}`}>
-            <Button variant="default" size="sm">
-              View Full Entry
-            </Button>
-          </Link>
-        </div>
-
-        {/* Timestamp */}
-        <div className="pt-3 border-t">
-          <p className="text-xs text-muted-foreground">
-            Last updated: {new Date(entry.updatedAt).toLocaleString()}
-          </p>
-        </div>
       </CardContent>
     </Card>
   );

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document outlines the implementation of the scheduled notifications feature for the MyKa PWA. The feature provides a comprehensive daily notification system that sends 6 scheduled reminders throughout the day to help users maintain their health and productivity routines.
+This document outlines the implementation of the scheduled notifications feature for the MyKa app. The feature provides a comprehensive daily notification system that sends 6 scheduled reminders throughout the day to help users maintain their health and productivity routines.
 
 ## Architecture
 
@@ -222,7 +222,7 @@ node scripts/test-scheduled-notifications.js
 
 ### Browser Testing
 - Test on Chrome, Firefox, Safari
-- Verify PWA installation and offline functionality
+- Verify app installation and offline functionality
 - Check notification permissions and handling
 
 ## Performance Considerations

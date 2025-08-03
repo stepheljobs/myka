@@ -323,7 +323,7 @@ export default function NotificationTestPage() {
               </Typography>
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Test on a real mobile device (not desktop browser)</li>
-                <li>Make sure the app is installed as a PWA</li>
+                <li>Make sure the app is installed on your device</li>
                 <li>Allow notifications when prompted</li>
                 <li>Try different notification types to see various behaviors</li>
                 <li>Test with the app in background/foreground</li>

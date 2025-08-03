@@ -1,4 +1,4 @@
-# PWA App Installation
+# MYKA App Installation
 
 A Progressive Web App built with Next.js 14, featuring neobrutalism design and native-like installation capabilities.
 
@@ -53,12 +53,12 @@ src/
 ├── lib/                # Utility functions and configurations
 ├── types/              # TypeScript type definitions
 public/
-├── manifest.json       # PWA manifest
-├── icons/              # PWA icons
-└── screenshots/        # PWA screenshots
+├── manifest.json       # App manifest
+├── icons/              # App icons
+└── screenshots/        # App screenshots
 ```
 
-## PWA Configuration
+## App Configuration
 
 The app is configured with:
 - Web App Manifest (`public/manifest.json`)
