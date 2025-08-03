@@ -19,6 +19,12 @@ const navigationTabs: NavigationTab[] = [
     href: '/dashboard'
   },
   {
+    id: 'dailies',
+    label: 'Dailies',
+    icon: '📊',
+    href: '/dashboard/dailies'
+  },
+  {
     id: 'priorities',
     label: 'Priorities',
     icon: '🎯',
