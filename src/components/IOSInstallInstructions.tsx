@@ -166,7 +166,7 @@ export function IOSInstallInstructions({ onClose, className = '' }: IOSInstallIn
               <div>
                 <p className="font-bold text-black text-sm">Fitness Benefits:</p>
                 <p className="text-gray-700 font-bold text-sm">
-                  Track workouts offline • Log meals instantly • Monitor progress anywhere
+                  Track workouts offline • Monitor progress anywhere
                 </p>
               </div>
             </div>

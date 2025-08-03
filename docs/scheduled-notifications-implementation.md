@@ -20,17 +20,17 @@ This document outlines the implementation of the scheduled notifications feature
 
 3. **Database Services**
    - `ScheduledNotificationsService` (`src/lib/scheduled-notifications-service.ts`)
-   - `MealService` (`src/lib/meal-service.ts`)
+   
    - `PriorityService` (`src/lib/priority-service.ts`)
 
 4. **API Routes**
-   - `/api/meals/*` - Meal logging endpoints
+   
    - `/api/priorities/*` - Priority management endpoints
    - `/api/notifications/scheduled/*` - Scheduled notifications endpoints
 
 5. **User Interface**
    - Notification Settings (`src/app/settings/notifications/page.tsx`)
-   - Meal Logging (`src/app/dashboard/meals/page.tsx`)
+   
    - Priority Management (`src/app/dashboard/priorities/page.tsx`)
 
 ## Notification Schedule
@@ -39,8 +39,7 @@ This document outlines the implementation of the scheduled notifications feature
 |------|------|---------|---------|
 | 6:00 AM | Weight Tracking | Log weight before water intake | Log Weight, Skip, Snooze |
 | 6:30 AM | Priority Review | Set top 3 priorities for the day | Review Priorities, Skip, Snooze |
-| 12:00 PM | Meal Logging | Log lunch foods and nutrition | Log Meal, Skip, Snooze |
-| 6:00 PM | Meal Logging | Log dinner foods and nutrition | Log Meal, Skip, Snooze |
+
 | 9:00 PM | Water Reminder | Final water intake check | Log Water, Skip, Snooze |
 | 10:00 PM | Evening Journal | Reflect on day and plan tomorrow | Write Journal, Skip, Snooze |
 
@@ -55,13 +54,13 @@ This document outlines the implementation of the scheduled notifications feature
 ### ✅ Phase 2: Notification Types
 - [x] Weight tracking notification (6:00 AM)
 - [x] Priority review notification (6:30 AM)
-- [x] Meal logging notifications (12:00 PM, 6:00 PM)
+
 - [x] Water reminder notification (9:00 PM)
 - [x] Evening journal notification (10:00 PM)
 
 ### ✅ Phase 3: User Interface
 - [x] Notification settings page with time pickers
-- [x] Meal logging interface with food search
+
 - [x] Priority management interface
 - [x] Updated bottom navigation
 
@@ -119,20 +118,7 @@ interface ScheduledNotificationDocument {
 }
 ```
 
-#### MealLogs Collection
-```typescript
-interface MealLog {
-  id: string;
-  userId: string;
-  date: string; // YYYY-MM-DD
-  mealType: 'breakfast' | 'lunch' | 'dinner' | 'snack';
-  foods: FoodItem[];
-  totalCalories?: number;
-  notes?: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-```
+
 
 #### Priorities Collection
 ```typescript
@@ -162,16 +148,7 @@ interface Priority {
    - Tapping opens priority management page
    - User sets top 3 priorities for the day
 
-### Daytime Flow (12:00 PM - 6:00 PM)
-3. **12:00 PM**: Lunch meal logging
-   - User receives notification with "Log Meal" action
-   - Tapping opens meal logging form
-   - User logs lunch foods and nutrition
 
-4. **6:00 PM**: Dinner meal logging
-   - User receives notification with "Log Meal" action
-   - Tapping opens meal logging form
-   - User logs dinner foods and nutrition
 
 ### Evening Flow (9:00 PM - 10:00 PM)
 5. **9:00 PM**: Final water intake
@@ -186,13 +163,7 @@ interface Priority {
 
 ## API Endpoints
 
-### Meal Logging
-- `GET /api/meals?date={date}&mealType={type}` - Get meal logs
-- `POST /api/meals` - Create meal log
-- `GET /api/meals/{id}` - Get specific meal log
-- `PUT /api/meals/{id}` - Update meal log
-- `DELETE /api/meals/{id}` - Delete meal log
-- `GET /api/meals/search?q={query}` - Search foods
+
 
 ### Priority Management
 - `GET /api/priorities?date={date}` - Get priorities

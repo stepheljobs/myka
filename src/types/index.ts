@@ -36,8 +36,6 @@ export interface UserPreferences {
     times: {
       weightTracking: string; // "06:00"
       priorityReview: string; // "06:30"
-      lunchLogging: string; // "12:00"
-      dinnerLogging: string; // "18:00"
       waterReminder: string; // "21:00"
       eveningJournal: string; // "22:00"
     };
@@ -422,7 +420,6 @@ export interface UpdateDailyEntryRequest {
 export type NotificationType = 
   | 'weight-tracking'
   | 'priority-review'
-  | 'meal-logging'
   | 'water-reminder'
   | 'evening-journal'
   | 'custom';
@@ -474,28 +471,7 @@ export interface NotificationLog {
   snoozeDuration?: number;
 }
 
-// Meal Logging Types
-export interface FoodItem {
-  name: string;
-  quantity: number;
-  unit: string;
-  calories?: number;
-  protein?: number;
-  carbs?: number;
-  fat?: number;
-}
 
-export interface MealLog {
-  id: string;
-  userId: string;
-  date: string; // YYYY-MM-DD
-  mealType: 'breakfast' | 'lunch' | 'dinner' | 'snack';
-  foods: FoodItem[];
-  totalCalories?: number;
-  notes?: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
 
 // Priority Management Types
 export interface Priority {

@@ -282,7 +282,7 @@ export default function Home() {
               </Typography>
               <Typography variant="body" className="mb-6 text-brutal-gray">
                 Install MYKA on your home screen for instant access to your fitness journey. 
-                Track workouts, log meals, and monitor progress - even when you&apos;re offline at the gym.
+                Track workouts and monitor progress - even when you&apos;re offline at the gym.
               </Typography>
               <Button 
                 variant="default" 

@@ -2,12 +2,12 @@
 
 ## Overview
 
-This feature implements a comprehensive daily notification system that sends 6 scheduled reminders throughout the day to help users maintain their health and productivity routines. The notifications are designed to create a structured daily flow that supports weight tracking, hydration, meal logging, priority management, and evening reflection.
+This feature implements a comprehensive daily notification system that sends 6 scheduled reminders throughout the day to help users maintain their health and productivity routines. The notifications are designed to create a structured daily flow that supports weight tracking, hydration, priority management, and evening reflection.
 
 ## Feature Goals
 
 - **Health Tracking Support**: Ensure users don't forget to log weight and water intake
-- **Meal Awareness**: Promote mindful eating through meal logging reminders
+
 - **Productivity Enhancement**: Help users stay focused on their top priorities
 - **Evening Reflection**: Encourage daily journaling and tomorrow planning
 - **Consistency Building**: Create a reliable daily routine through timely reminders
@@ -18,8 +18,7 @@ This feature implements a comprehensive daily notification system that sends 6 s
 |------|---------|--------|----------|
 | 6:00 AM | Weight tracking reminder | Log weight before water intake | High |
 | 6:30 AM | Priority review | Review top 3 priorities for the day | High |
-| 12:00 PM | Lunch meal logging | Log lunch foods and nutrition | Medium |
-| 6:00 PM | Dinner meal logging | Log dinner foods and nutrition | Medium |
+
 | 9:00 PM | Final water intake | Last water intake reminder | Medium |
 | 10:00 PM | Evening journaling | Write wins, commitments, and tomorrow's plans | High |
 
@@ -50,7 +49,7 @@ interface NotificationAction {
 type NotificationType = 
   | 'weight-tracking'
   | 'priority-review'
-  | 'meal-logging'
+  
   | 'water-reminder'
   | 'evening-journal'
   | 'custom';
@@ -121,30 +120,7 @@ interface NotificationLog {
 }
 ```
 
-**MealLogs** (New Feature)
-```typescript
-interface MealLog {
-  id: string;
-  userId: string;
-  date: string; // YYYY-MM-DD
-  mealType: 'breakfast' | 'lunch' | 'dinner' | 'snack';
-  foods: FoodItem[];
-  totalCalories?: number;
-  notes?: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
 
-interface FoodItem {
-  name: string;
-  quantity: number;
-  unit: string;
-  calories?: number;
-  protein?: number;
-  carbs?: number;
-  fat?: number;
-}
-```
 
 ### 4. User Settings & Preferences
 
@@ -158,8 +134,7 @@ interface UserPreferences {
     times: {
       weightTracking: string; // "06:00"
       priorityReview: string; // "06:30"
-      lunchLogging: string; // "12:00"
-      dinnerLogging: string; // "18:00"
+
       waterReminder: string; // "21:00"
       eveningJournal: string; // "22:00"
     };
@@ -196,7 +171,7 @@ interface UserPreferences {
 #### Task 1.3: Database Schema
 - [ ] Create Firestore collections for scheduled notifications
 - [ ] Add notification logging collection
-- [ ] Create meal logging collection
+
 - [ ] Update user preferences schema
 
 ### Phase 2: Notification Types Implementation (Week 2)
@@ -213,11 +188,7 @@ interface UserPreferences {
 - [ ] Implement navigation to priority management
 - [ ] Add priority completion tracking
 
-#### Task 2.3: Meal Logging Notifications (12:00 PM, 6:00 PM)
-- [ ] Create meal logging notification templates
-- [ ] Add action buttons: "Log Meal", "Skip", "Snooze"
-- [ ] Implement meal logging interface
-- [ ] Add nutrition tracking capabilities
+
 
 #### Task 2.4: Water Reminder (9:00 PM)
 - [ ] Create water reminder notification template
@@ -269,7 +240,7 @@ interface UserPreferences {
 #### Task 4.1: Service Integration
 - [ ] Integrate notification system with existing features
 - [ ] Update morning routine to work with new notifications
-- [ ] Connect meal logging with weight tracking
+
 - [ ] Link priority management with daily progress
 
 #### Task 4.2: Testing & Debugging
@@ -297,16 +268,7 @@ interface UserPreferences {
    - Tapping opens priority management page
    - User sets top 3 priorities for the day
 
-### Daytime Flow (12:00 PM - 6:00 PM)
-3. **12:00 PM**: Lunch meal logging
-   - User receives notification with "Log Meal" action
-   - Tapping opens meal logging form
-   - User logs lunch foods and nutrition
 
-4. **6:00 PM**: Dinner meal logging
-   - User receives notification with "Log Meal" action
-   - Tapping opens meal logging form
-   - User logs dinner foods and nutrition
 
 ### Evening Flow (9:00 PM - 10:00 PM)
 5. **9:00 PM**: Final water intake
@@ -335,19 +297,7 @@ Body: "Review and set your most important goals for today."
 Actions: ["Review Priorities", "Skip", "Snooze 10min"]
 ```
 
-### Lunch Logging (12:00 PM)
-```
-Title: "Log Your Lunch! 🍽️"
-Body: "Keep track of your nutrition by logging what you ate for lunch."
-Actions: ["Log Meal", "Skip", "Snooze 15min"]
-```
 
-### Dinner Logging (6:00 PM)
-```
-Title: "Log Your Dinner! 🍽️"
-Body: "Don't forget to log your dinner for complete nutrition tracking."
-Actions: ["Log Meal", "Skip", "Snooze 15min"]
-```
 
 ### Water Reminder (9:00 PM)
 ```
@@ -395,7 +345,7 @@ Actions: ["Write Journal", "Skip", "Snooze 15min"]
 ### Health Tracking
 - Weight logging consistency (target: >80%)
 - Water intake logging (target: >70%)
-- Meal logging completion (target: >60%)
+
 
 ### Productivity
 - Priority review completion (target: >75%)
@@ -413,8 +363,8 @@ Actions: ["Write Journal", "Skip", "Snooze 15min"]
 - Smart notification timing based on user behavior
 
 ### Advanced Features
-- AI-powered meal suggestions
-- Nutrition goal tracking
+
+
 - Priority completion analytics
 - Habit streak tracking
 - Social sharing of achievements
